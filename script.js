@@ -209,3 +209,46 @@ scrollTopBtn.addEventListener('click', () => {
 
 // Re-initialize Lucide icons for dynamically added elements
 lucide.createIcons();
+
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+    
+    // Check if elements exist before adding event listeners
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            
+            if (navMenu.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        });
+    } else {
+        console.warn('Hamburger menu elements not found. Please check your HTML IDs.');
+    }
+    
+    // Optional: Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+        if (hamburger && navMenu && 
+            !hamburger.contains(event.target) && 
+            !navMenu.contains(event.target) && 
+            navMenu.classList.contains('active')) {
+            
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+    
+    // Optional: Close menu on window resize
+    window.addEventListener('resize', function() {
+        if (hamburger && navMenu && navMenu.classList.contains('active')) {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+});
