@@ -580,7 +580,7 @@ html {
 
 /* Contact Section */
 .contact {
-    padding: 100px 0;
+    padding: 100px 0px;
     background: #ffffff;
 }
 
@@ -636,9 +636,10 @@ html {
 }
 
 .contact-form {
-    display: flex;
+    display: relative;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1rem;
+    width: 100%;
 }
 
 .form-group {
@@ -754,6 +755,7 @@ html {
     .contact-content {
         grid-template-columns: 1fr;
         gap: 2rem;
+        width: 100%;
     }
 
     .hero-buttons {
@@ -799,6 +801,7 @@ html {
     .about-card {
         padding: 2rem;
     }
+
 
     .skill-card {
         padding: 1.5rem;
