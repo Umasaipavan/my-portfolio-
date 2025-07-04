@@ -41,7 +41,57 @@
         </div>
     </nav>
     <style>
+        
     /* Responsive Navigation Styles */
+    /* Side NavBar for Mobile */
+    @media (max-width: 768px) {
+        .nav-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 220px;
+            height: 100vh;
+            background: #fff;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 90px 24px 24px 24px;
+            gap: 28px;
+            box-shadow: -2px 0 24px rgba(162,89,230,0.10);
+            transition: right 0.3s cubic-bezier(.4,2,.6,1);
+            z-index: 105;
+        }
+        .nav-menu.active {
+            right: 0;
+        }
+        .hamburger {
+            display: flex;
+        }
+        .nav-link {
+            font-size: 1.1rem;
+            width: 100%;
+            padding: 12px 0;
+        }
+        .nav-logo .logo-text {
+            font-size: 1rem;
+        }
+        .navbar {
+            height: 64px;
+        }
+        .nav-container {
+            height: 64px;
+        }
+    }
+    @media (max-width: 480px) {
+        .nav-menu {
+            width: 80vw;
+            padding: 70px 12px 12px 12px;
+            gap: 18px;
+        }
+        .nav-link {
+            font-size: 1rem;
+            padding: 10px 0;
+        }
+    }
     .navbar {
         width: 100%;
         background: #fff;
@@ -387,9 +437,9 @@
                     </h1>
                 </div>
                 
-                <div class="tagline-container">
-                    <h2 class="animated-tagline moving-letters">  I don't just write code  <br>
-                                           I engineer possibilities</h2>
+                <div class="tagline-container"><br>
+                    
+            <h2 class="animated-tagline moving-letters">A Passionate Software Developer</h2>
                     <script>
                     document.addEventListener("DOMContentLoaded", function() {
                         const tagline = document.querySelector('.animated-tagline.moving-letters');
