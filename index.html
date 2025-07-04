@@ -243,7 +243,7 @@
         // Close menu on link click (mobile)
         navMenu.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => {
-                if(window.innerWidth <= 768) {
+                if(window.innerWidth <= 1000) {
                     hamburger.classList.remove('active');
                     navMenu.classList.remove('active');
                     document.body.style.overflow = '';
@@ -252,10 +252,10 @@
         });
         // Close menu on resize
         window.addEventListener('resize', () => {
-            if(window.innerWidth > 768) {
+            if(window.innerWidth > 1000) {
                 hamburger.classList.remove('active');
                 navMenu.classList.remove('active');
-                document.body.style.overflow = '';
+                document.body.style.overflow = 'active';
             }
         });
     });
