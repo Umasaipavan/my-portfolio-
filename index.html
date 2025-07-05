@@ -2218,7 +2218,57 @@ I developed the frontend for a full-stack web application managing performance p
                 </form>
             </div>
         </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     </section>
+
+    <script>
+        // Initialize EmailJS with your Public Key
+emailjs.init('UVKqLpg6HnSI3jRzp');
+
+document.querySelector('.contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Get the submit button
+    const submitBtn = e.target.querySelector('button[type="submit"]');
+    const originalBtnText = submitBtn.innerHTML;
+    
+    // Change button text temporarily
+    submitBtn.innerHTML = 'Sending...';
+    submitBtn.disabled = true;
+
+    // Prepare email data from your existing form fields
+    const emailData = {
+        to_name: "Your Name", // Change this to your name
+        from_name: e.target.querySelector('.form-input[placeholder="Your Name"]').value,
+        from_email: e.target.querySelector('.form-input[placeholder="Your Email"]').value,
+        subject: e.target.querySelector('.form-input[placeholder="Subject"]').value,
+        message: e.target.querySelector('.form-textarea').value,
+        reply_to: e.target.querySelector('.form-input[placeholder="Your Email"]').value
+    };
+
+    // Send email using your existing EmailJS service
+    emailjs.send('service_xn9dbmr', 'template_q6dlhwj', emailData)
+        .then(function() {
+            // On success - reset form and show brief alert
+            e.target.reset();
+            alert('Message sent successfully!');
+        })
+        .catch(function(error) {
+            // On error - show error message
+            console.error('Email send failed:', error);
+            alert('Failed to send message. Please try again.');
+        })
+        .finally(function() {
+            // Restore original button state
+            submitBtn.innerHTML = originalBtnText;
+            submitBtn.disabled = false;
+        });
+});
+
+
+
+    </script>
 
     <!-- Footer -->
     <style>
