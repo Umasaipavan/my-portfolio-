@@ -10,6 +10,144 @@
 </head>
 <body>
     <!-- Navigation -->
+    <!-- Mobile Sidebar Navigation -->
+    <!-- The mobile sidebar is already included below this placeholder.
+        To ensure full responsiveness, make sure your navigation bar and sidebar are styled and toggled using media queries and JavaScript as in your code.
+        No additional markup is needed here. -->
+    <div class="mobile-sidebar" id="mobile-sidebar">
+        <div class="mobile-sidebar-header">
+            <div class="nav-logo">
+                <img src="USP1(1).jpg" alt="Logo" class="nav-logo-img" style="width:40px; height:40px; border-radius:50%; vertical-align:middle; margin-right:10px; box-shadow:0 2px 8px rgba(0,0,0,0.10); border:2px solid #a259e6;">
+                <span class="logo-text">PORTFOLIO</span>
+            </div>
+            <div class="close-sidebar" id="close-sidebar" tabindex="0" aria-label="Close navigation">
+                <span style="font-size:2rem; color:#a259e6;">&times;</span>
+            </div>
+        </div>
+        <ul class="mobile-nav-menu">
+            <li><a href="#home" class="nav-link">Home</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#skills" class="nav-link">Skills</a></li>
+            <li><a href="#projects" class="nav-link">Projects</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+    </div>
+    <style>
+    /* Hide mobile sidebar by default */
+    .mobile-sidebar {
+        display: none;
+    }
+    @media (max-width: 768px) {
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            z-index: 200;
+        }
+        .nav-menu {
+            display: none !important;
+        }
+        .mobile-sidebar {
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            top: 0;
+            left: -100vw;
+            width: 80vw;
+            max-width: 320px;
+            height: 100vh;
+            background: #fff;
+            box-shadow: 2px 0 24px rgba(162,89,230,0.10);
+            z-index: 300;
+            transition: left 0.3s cubic-bezier(.4,2,.6,1);
+            padding-top: 0;
+        }
+        .mobile-sidebar.active {
+            left: 0;
+        }
+        .mobile-sidebar-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 20px 0 20px;
+            height: 64px;
+            border-bottom: 1px solid #f6f2fd;
+        }
+        .close-sidebar {
+            cursor: pointer;
+            outline: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+        .close-sidebar:focus, .close-sidebar:hover {
+            background: #f6f2fd;
+        }
+        .mobile-nav-menu {
+            list-style: none;
+            padding: 32px 0 0 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        .mobile-nav-menu .nav-link {
+            font-size: 1.2rem;
+            color: #333;
+            text-decoration: none;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background 0.2s, color 0.2s;
+        }
+        .mobile-nav-menu .nav-link:hover,
+        .mobile-nav-menu .nav-link.active {
+            color: #a259e6;
+            background: #f6f2fd;
+        }
+        body.sidebar-open {
+            overflow: hidden;
+        }
+    }
+    </style>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const hamburger = document.getElementById('hamburger');
+        const mobileSidebar = document.getElementById('mobile-sidebar');
+        const closeSidebar = document.getElementById('close-sidebar');
+        // Open sidebar
+        hamburger.addEventListener('click', function() {
+            mobileSidebar.classList.add('active');
+            document.body.classList.add('sidebar-open');
+        });
+        // Close sidebar
+        closeSidebar.addEventListener('click', function() {
+            mobileSidebar.classList.remove('active');
+            document.body.classList.remove('sidebar-open');
+        });
+        closeSidebar.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                mobileSidebar.classList.remove('active');
+                document.body.classList.remove('sidebar-open');
+            }
+        });
+        // Close sidebar on nav link click
+        mobileSidebar.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileSidebar.classList.remove('active');
+                document.body.classList.remove('sidebar-open');
+            });
+        });
+        // Close sidebar on resize to desktop
+        window.addEventListener('resize', () => {
+            if(window.innerWidth > 768) {
+                mobileSidebar.classList.remove('active');
+                document.body.classList.remove('sidebar-open');
+            }
+        });
+    });
+    </script></div>
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="nav-logo">
