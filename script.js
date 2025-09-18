@@ -251,8 +251,6 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.style.overflow = '';
         }
     });
-<<<<<<< HEAD
+
 });
-=======
-});
->>>>>>> 6636c121dfbcf178bbebbcd0c29bef19793be8c2
+
